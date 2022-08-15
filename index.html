@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer App</title>
+    <!-- Get Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
+    <!-- Get Text Editor -->
+    <script src="https://cdn.tiny.cloud/1/ukc1v6cndam1jyqrrz56g6e7x23b0j2bhn2nd9gwhrc8gobc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    
+    <!-- Get jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>"></script>
+    
+    <!-- Get Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Get Icon -->
+    <script src="https://kit.fontawesome.com/e0bc28d372.js" crossorigin="anonymous"></script>
+    
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="brand">Writer App</h1>
+        <img class="logo" src="img/logo.jpg" alt="logo.png">
+    </div>
+    <div class="content">
+        <div id="Workplace">
+            Storage
+            <hr>
+            <div id="LocalStorage"></div>
+            <button class="addition-button" onclick=openTextEditor()><i class="fa-solid fa-circle-plus fa-2x"></i></button>
+        </div>
+    </div>
+    <div class="footer">
+        <p ID = "copyright">Copyright 2022 ThieuLuu @ UET.</p>
+        <button class="button-icon" onclick=sendMail()><i class="icon fa-solid fa-envelope fa-2x"></i></button>
+        <button class="button-icon" onclick=goToFacebook()><i class="icon fa-brands fa-facebook fa-2x"></i></button>
+        <button class="button-icon" onclick=goToLinkedIn()><i class="icon fa-brands fa-linkedin fa-2x"></i></button>
+    </div>
+    <script src="js/work.js"></script>
+</body>
+</html>
