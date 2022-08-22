@@ -108,7 +108,7 @@ function addDoc() {
         transaction.addEventListener('error', () => console.log('Transaction not opened due to error'));
         // Remove text editor and textarea that was created before.
         tinymce.remove();
-        workplace.removeChild(newTextArea)
+        workplace.removeChild(newTextArea);
       }
 
 // *FUNCTION DISPLAY DATA
@@ -172,8 +172,82 @@ function deleteDoc(e) {
 // *FUNCTION EDIT
 function editDoc(e) {
   const documentId = Number(e.target.parentNode.parentNode.getAttribute('data-document-id'));
-  const transaction = db.transaction('storage_os', 'readonly');   
+  const transaction = db.transaction('storage_os', 'readwrite');  
+  const objectStore = transaction.objectStore('storage_os');
+  objectStore.openCursor().addEventListener('success', (e) => {
+    const cursor = e.target.result;
+    let outputContent = cursor.value.content;
+    // Check if already had a text editor. If not open a new text editor.
+    if (tinymce.activeEditor == null) {
+      // Create a dynamic text area in workplace
+      newTextArea = document.createElement('textarea');
+      workplace.appendChild(newTextArea);  
+        tinymce.init({
+            target: newTextArea,
+            plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents myButton',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            setup: function(editor) {
+              editor.on('init', function (e) {
+                editor.setContent(outputContent);
+              });
+              editor.ui.registry.addButton('myButton', {
+                text: "Save",
+                onAction: function(_) { 
+                  // Create a message to get the document name by popup message.
+                  let messageBlock = document.createElement('div');
+                  messageBlock.setAttribute('id', 'getName');
+                  messageBlock.setAttribute('style', 'position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); border: 1px solid black');
+                  let htmlcode = '<label for="docName">Enter your document name:</label>'
+                  + '<br>'
+                  + '<input type="text" id="docName" name="docName">'
+                  + '<br>'
+                  // If hit cancel button, remove message and continue to malnipulate with text editor.
+                  + '<button id="cancelBtn" onclick=cancelSaving(cancelBtn)>Cancel</button>'
+                  // If hit save button, remove message, remove text editor and store data into database.
+                  + '<button id="saveBtn" onclick=savingEdition(saveBtn,inputName,inputContent,tinymce,docName,newTextArea)>OK</button>';
+                  messageBlock.innerHTML = htmlcode;
+                  document.body.appendChild(messageBlock);
+                }
+              });
+
+            }
+          });
+      }  
+
+    
+  });
 }
+  // Support Function
+    function savingEdition(saveBtn,inputName,inputContent,tinymce,docName,newTextArea) {
+      // Get input name which user have just type in
+      inputName = docName.value;
+      // Get input data in text editor
+      inputContent = tinymce.activeEditor.getContent();
+      document.body.removeChild(saveBtn.parentNode);
+      // Create an object to use for add function 
+      // Open objectStore with readwrite mode
+      const transaction = db.transaction('storage_os', 'readwrite');
+      const objectStore = transaction.objectStore('storage_os');
+      objectStore.openCursor().addEventListener('success', (e) => {
+        const cursor = e.target.result;
+        const updateData = cursor.value;
+        updateData.name = inputName;
+        updateData.content = inputContent;
+        const updateRequest = cursor.update(updateData); 
+        updateRequest.addEventListener('success', (e) => {
+          console.log('Edition was successfully saved');
+          displayData();
+        });
+        updateRequest.addEventListener('error', (e) => {
+          console.log('Edition was not saved due to error');
+        });
+      });
+      tinymce.remove();
+      workplace.removeChild(newTextArea)
+    }
 
 // *FUNCTION FOR CONTACT
 function sendMail() {
