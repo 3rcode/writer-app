@@ -27,16 +27,16 @@ function addDoc() {
                     // Create a message to get the document name by popup message.
                     let messageBlock = document.createElement('div');
                     messageBlock.setAttribute('id', 'getName');
-                    messageBlock.setAttribute('z-index', '1000');
-                    messageBlock.setAttribute('style', 'position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); border: 1px solid black');
+                    messageBlock.setAttribute('style', 'position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);' 
+                    + 'border: 1px solid black; border-radius: 10px; z-index: 1000000; background-color: #6E85B7; color: #fff; text-align: center');
                     let htmlcode = '<label for="docName">Enter your document name:</label>'
                     + '<br>'
                     + '<input type="text" id="docName" name="docName">'
                     + '<br>'
                     // If hit cancel button, remove message and continue to malnipulate with text editor.
-                    + '<button id="cancelBtn" onclick=cancelSaving(cancelBtn)>Cancel</button>'
+                    + '<button id="cancelBtn" style="background-color: #6E85B7; color: #fff; border: none; margin-top: 5px; margin-right: 10px" onclick=cancelSaving(cancelBtn)>Cancel</button>'
                     // If hit save button, remove message, remove text editor and store data into database.
-                    + '<button id="saveBtn" onclick=continueSaving(saveBtn,inputName,inputContent,tinymce,docName,newTextArea)>OK</button>';
+                    + '<button id="saveBtn" style="background-color: #6E85B7; color: #fff; border: none; margin-top: 5px; margin-left: 10px" onclick=continueSaving(saveBtn,inputName,inputContent,tinymce,docName,newTextArea)>OK</button>';
                     messageBlock.innerHTML = htmlcode;
                     document.body.appendChild(messageBlock);
                   }
@@ -77,14 +77,16 @@ function displayData() {
       storageItem.appendChild(documentName);
       storageItem.appendChild(editButton);
       storageItem.appendChild(deleteButton);
-      storageItem.setAttribute('style', 'display: flex; background-color: #6E85B7; border-radius: 10px; margin-bottom: 1%');
+      storageItem.setAttribute('style', 'display: flex; justify-content: center; background-color: #6E85B7; border-radius: 10px; margin-bottom: 1%');
       storage.appendChild(storageItem);
       documentName.textContent = localStorage.key(i);
-      documentName.setAttribute('style', 'color: #fff');
+      documentName.setAttribute('style', 'color: #fff; text-decoration: underline; margin-left: 10%');
       editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
       deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
       editButton.setAttribute('class', 'button-icon');
+      editButton.setAttribute('style', 'margin-left: auto; margin-right: 5%');
       deleteButton.setAttribute('class', 'button-icon');
+      deleteButton.setAttribute('style', 'margin-right: 10%');
       storageItem.setAttribute('data-document-name', localStorage.key(i));
       deleteButton.addEventListener('click', deleteDoc);
       editButton.addEventListener('click', editDoc);
@@ -123,15 +125,16 @@ function displayData() {
                   let messageBlock = document.createElement('div');
                   messageBlock.setAttribute('id', 'getName');
                   messageBlock.setAttribute('z-index', '1000');
-                  messageBlock.setAttribute('style', 'position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); border: 1px solid black');
+                  messageBlock.setAttribute('style', 'position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);' 
+                  + 'border: 1px solid black; border-radius: 10px; z-index: 1000000; background-color: #6E85B7; color: #fff; text-align: center');
                   let htmlcode = '<label for="docName">Enter your document name:</label>'
                   + '<br>'
                   + '<input type="text" id="docName" name="docName">'
                   + '<br>'
                   // If hit cancel button, remove message and continue to malnipulate with text editor.
-                  + '<button id="cancelBtn" onclick=cancelSaving(cancelBtn)>Cancel</button>'
+                  + '<button id="cancelBtn" style="background-color: #6E85B7; color: #fff; border: none; margin-top: 5px; margin-right: 10px" onclick=cancelSaving(cancelBtn)>Cancel</button>'
                   // If hit save button, remove message, remove text editor and store data into database.
-                  + '<button id="saveBtn" onclick=savingEdition(saveBtn,inputName,inputContent,tinymce,docName,newTextArea,globaldocumentName)>OK</button>';
+                  + '<button id="saveBtn" style="background-color: #6E85B7; color: #fff; border: none; margin-top: 5px; margin-left: 10px" onclick=savingEdition(saveBtn,inputName,inputContent,tinymce,docName,newTextArea,globaldocumentName)>OK</button>';
                   messageBlock.innerHTML = htmlcode;
                   document.body.appendChild(messageBlock);
                 }

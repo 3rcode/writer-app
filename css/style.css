@@ -8,6 +8,12 @@ a {
     color: #fff;
     font-size: 1rem;
 }
+label {
+    margin-bottom: 5px;
+}
+input {
+    border-radius: 5px;
+}
 /* HEADER */
 .header {
     background-color: #6E85B7;
@@ -77,6 +83,12 @@ a {
 .button-icon:hover {
     color: #B93160;
 }
+
+#storage {
+    text-decoration: underline;
+    padding: 0;
+}
+
 
 
 
