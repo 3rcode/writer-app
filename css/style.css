@@ -14,6 +14,10 @@ label {
 input {
     border-radius: 5px;
 }
+
+h1 {
+    font-size: calc(1rem + 1vh);
+}
 /* HEADER */
 .header {
     background-color: #6E85B7;
@@ -23,16 +27,15 @@ input {
 .logo {
     margin-left: auto;
     margin-right: 3%;
-    width: 4%;
+    width: 3%;
     border-radius: 100%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
 }
 .brand {
     margin-left: 3%;
-    line-height: 1.5rem;
     font-family: "Montserrat";
-    font-weight: 600;
+    font-weight: 400;
     color: #fff;
 }
 
@@ -41,7 +44,7 @@ input {
 .content {
     margin-left: 15%;
     margin-right: 15%;
-    min-height: 80vh;
+    min-height: 85vh;
     color: #6E85B7;
     background-color: #fff;
     font-family: "Montserrat-Bold";
@@ -52,7 +55,6 @@ input {
     color: #6E85B7;
     border: none;
     cursor: pointer;
-
 }
 .addition-button:hover {
     color: #231955;
@@ -61,32 +63,27 @@ input {
 /* FOOTER */
 .footer {
     background-color: #6E85B7;
-    height: 100px;
+    display: flex;
     color: #fff;
-    text-align: center;
+    justify-content: center;
 }
 #copyright {
     padding-top:1%;
-    line-height: 1.5;
+    line-height: 1;
 }
 .icon {
-    padding-bottom: 2%;
+    padding-bottom: 1%;
 }
 .button-icon {
     background-color: #6E85B7;
     border: none; /* Remove borders */
     color: white; /* White text */
     margin-left: 2%;
-    margin-right: 2%;
+    margin-right: 1%;
     cursor: pointer; /* Mouse pointer on hover */
 }
 .button-icon:hover {
     color: #B93160;
-}
-
-#storage {
-    text-decoration: underline;
-    padding: 0;
 }
 
 
