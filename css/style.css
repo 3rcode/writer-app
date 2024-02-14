@@ -2,11 +2,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat";
+    position: relative;
 }
 a {
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
+}
+p {
+    margin: 0;
 }
 label {
     margin-bottom: 5px;
@@ -14,23 +18,46 @@ label {
 input {
     border-radius: 5px;
 }
+/* span {
+    border: 1px solid;
+    display: inline-block;
+    height: 38px;
+    overflow: hidden;
+    position: relative;
+    width: 45px;
+}
+
+i::before {
+    left: 0;
+    position: absolute;
+    top: -4px;
+} */
 /* HEADER */
 .header {
     background-color: #6E85B7;
     display: flex;
     align-items: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .logo {
+    display: block;
     margin-left: auto;
     margin-right: 3%;
-    width: 4%;
+    width: 2%;
     border-radius: 100%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    padding-top: 0.2%;
+    padding-bottom: 0.2%;
 }
 .brand {
     margin-left: 3%;
-    line-height: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1rem;
     font-family: "Montserrat";
     font-weight: 600;
     color: #fff;
@@ -45,14 +72,14 @@ input {
     color: #6E85B7;
     background-color: #fff;
     font-family: "Montserrat-Bold";
-    font-size: 1.5rem;
+    font-size: 1rem;
+    margin-top: 1%;
 }
 .addition-button {
     background-color: #fff;
     color: #6E85B7;
     border: none;
     cursor: pointer;
-
 }
 .addition-button:hover {
     color: #231955;
@@ -61,32 +88,26 @@ input {
 /* FOOTER */
 .footer {
     background-color: #6E85B7;
-    height: 100px;
     color: #fff;
-    text-align: center;
-}
-#copyright {
-    padding-top:1%;
-    line-height: 1.5;
-}
-.icon {
-    padding-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .button-icon {
     background-color: #6E85B7;
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    margin-left: 2%;
-    margin-right: 2%;
-    cursor: pointer; /* Mouse pointer on hover */
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 .button-icon:hover {
     color: #B93160;
-}
-
-#storage {
-    text-decoration: underline;
-    padding: 0;
 }
 
 

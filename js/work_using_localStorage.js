@@ -166,7 +166,7 @@ function sendMail() {
   }
   
   function goToFacebook() {
-    window.location.href = "https://www.facebook.com/luu.thieu.9659";
+    window.location.href = "https://www.facebook.com/luuthieu.ltgk03";
   }
   
   function goToLinkedIn() {
